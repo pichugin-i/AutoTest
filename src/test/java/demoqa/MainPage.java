@@ -1,5 +1,6 @@
 package demoqa;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,8 +36,19 @@ public class MainPage {
     @FindBy(id = "submit")
     private WebElement button;
 
-    @FindBy(name = "mobilePhone")
-    public WebElement fieldPhone;
+
+    @FindBy(xpath = "//p[@id='name']")
+    private WebElement textName;
+
+    @FindBy(xpath = "//p[@id='email']")
+    private WebElement textEmail;
+
+    @FindBy(xpath = "//p[@id='currentAddress']")
+    private WebElement textCurrArd;
+
+    @FindBy(xpath = "//p[@id='permanentAddress']")
+    private WebElement textPerAdr;
+
 
 
     public void createTextBox(String fieldNameValue, String fieldEmailValue, String currentAddressValue, String permanentAddressValue) {
@@ -47,5 +59,9 @@ public class MainPage {
         fieldCurrentAdr.sendKeys(currentAddressValue);
         fieldPermamentAdr.sendKeys(permanentAddressValue);
         button.click();
+        Assert.assertEquals("Name:"+fieldNameValue, textName.getText());
+        Assert.assertEquals("Email:"+fieldEmailValue, textEmail.getText());
+        Assert.assertEquals("Current Address :"+currentAddressValue, textCurrArd.getText());
+        Assert.assertEquals("Permananet Address :"+permanentAddressValue, textPerAdr.getText());
     }
 }
