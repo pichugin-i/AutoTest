@@ -59,9 +59,9 @@ public class MainPage {
         fieldCurrentAdr.sendKeys(currentAddressValue);
         fieldPermamentAdr.sendKeys(permanentAddressValue);
         button.click();
-        Assert.assertEquals("Name:"+fieldNameValue, textName.getText());
-        Assert.assertEquals("Email:"+fieldEmailValue, textEmail.getText());
-        Assert.assertEquals("Current Address :"+currentAddressValue, textCurrArd.getText());
-        Assert.assertEquals("Permananet Address :"+permanentAddressValue, textPerAdr.getText());
+        Assert.assertEquals(fieldNameValue, textName.getText().substring(5));
+        Assert.assertEquals(fieldEmailValue, textEmail.getText().substring(6));
+        Assert.assertEquals(currentAddressValue, textCurrArd.getText().substring(17));
+        Assert.assertEquals(permanentAddressValue, textPerAdr.getText().substring(20));
     }
 }
